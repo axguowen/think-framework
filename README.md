@@ -1,6 +1,6 @@
 ![](https://box.kancloud.cn/5a0aaa69a5ff42657b5c4715f3d49221) 
 
-ThinkPHP 6.0
+ThinkPHP 6.1
 ===============
 
 [![Build Status](https://travis-ci.org/top-think/framework.svg?branch=6.0)](https://travis-ci.org/top-think/framework)
@@ -39,7 +39,7 @@ ThinkPHP6.0底层架构采用PHP7.1改写和进一步优化。
 ## 安装
 
 ~~~
-composer create-project topthink/think tp
+composer create-project axguowen/think tp
 ~~~
 
 启动服务
@@ -57,7 +57,7 @@ http://localhost:8000
 
 如果需要更新框架使用
 ~~~
-composer update topthink/framework
+composer update axguowen/think-framework
 ~~~
 
 ## 文档
