@@ -1,0 +1,26 @@
+<?php
+
+namespace {%namespace%};
+
+class {%className%} extends \think\Service
+{
+    /**
+     * 注册服务
+     *
+     * @return mixed
+     */
+    public function register()
+    {
+    	//
+    }
+
+    /**
+     * 执行服务
+     *
+     * @return mixed
+     */
+    public function boot()
+    {
+        //
+    }
+}

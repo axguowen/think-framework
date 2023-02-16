@@ -1,0 +1,16 @@
+<?php
+
+namespace {%namespace%};
+
+class {%className%}
+{
+    /**
+     * 事件监听处理
+     *
+     * @return mixed
+     */
+    public function handle($event)
+    {
+        //
+    }
+}
