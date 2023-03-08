@@ -40,7 +40,7 @@ class Memcached extends Driver
      * @access public
      * @param array $options 缓存参数
      */
-    public function __construct($options = [])
+    public function __construct(array $options = [])
     {
         if (!extension_loaded('memcached')) {
             throw new \BadFunctionCallException('not support: memcached');
@@ -212,7 +212,7 @@ class Memcached extends Driver
      * @param array $keys 缓存标识列表
      * @return void
      */
-    public function clearTag($keys)
+    public function clearTag(array $keys)
     {
         $this->handler->deleteMulti($keys);
     }

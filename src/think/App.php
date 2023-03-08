@@ -563,7 +563,7 @@ class App extends Container
      * @param array $event 事件数据
      * @return void
      */
-    public function loadEvent($event)
+    public function loadEvent(array $event)
     {
         if (isset($event['bind'])) {
             $this->event->bind($event['bind']);

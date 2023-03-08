@@ -51,7 +51,7 @@ class Resource extends RuleGroup
      * @param  string        $route      路由地址
      * @param  array         $rest       资源定义
      */
-    public function __construct(Route $router, RuleGroup $parent = null, $name = '', $route = '', $rest = [])
+    public function __construct(Route $router, RuleGroup $parent = null, $name = '', $route = '', array $rest = [])
     {
         $name           = ltrim($name, '/');
         $this->router   = $router;
@@ -134,7 +134,7 @@ class Resource extends RuleGroup
      * @param  array $only 资源允许
      * @return $this
      */
-    public function only($only)
+    public function only(array $only)
     {
         return $this->setOption('only', $only);
     }
@@ -145,7 +145,7 @@ class Resource extends RuleGroup
      * @param  array $except 排除资源
      * @return $this
      */
-    public function except($except)
+    public function except(array $except)
     {
         return $this->setOption('except', $except);
     }
@@ -156,7 +156,7 @@ class Resource extends RuleGroup
      * @param  array $vars 资源变量
      * @return $this
      */
-    public function vars($vars)
+    public function vars(array $vars)
     {
         return $this->setOption('var', $vars);
     }

@@ -226,7 +226,7 @@ class RuleItem extends Rule
      * @param  array        $option   路由参数
      * @return string
      */
-    protected function urlSuffixCheck(Request $request, $url, $option = [])
+    protected function urlSuffixCheck(Request $request, $url, array $option = [])
     {
         // 是否区分 / 地址访问
         if (!empty($option['remove_slash']) && '/' != $this->rule) {
@@ -251,7 +251,7 @@ class RuleItem extends Rule
      * @param  bool      $completeMatch   是否完全匹配
      * @return array|false
      */
-    private function checkMatch($url, $option, $pattern, $completeMatch)
+    private function checkMatch($url, array $option, array $pattern, $completeMatch)
     {
         if (isset($option['complete_match'])) {
             $completeMatch = $option['complete_match'];

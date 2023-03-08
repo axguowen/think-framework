@@ -39,7 +39,7 @@ class Php implements TemplateHandlerInterface
         'view_depr'     => DIRECTORY_SEPARATOR,
     ];
 
-    public function __construct(App $app, $config = [])
+    public function __construct(App $app, array $config = [])
     {
         $this->app    = $app;
         $this->config = array_merge($this->config, (array) $config);
@@ -68,7 +68,7 @@ class Php implements TemplateHandlerInterface
      * @param array  $data     模板变量
      * @return void
      */
-    public function fetch($template, $data = [])
+    public function fetch($template, array $data = [])
     {
         if ('' == pathinfo($template, PATHINFO_EXTENSION)) {
             // 获取模板文件名
@@ -94,7 +94,7 @@ class Php implements TemplateHandlerInterface
      * @param array  $data    模板变量
      * @return void
      */
-    public function display($content, $data = [])
+    public function display($content, array $data = [])
     {
         $this->content = $content;
 
@@ -172,7 +172,7 @@ class Php implements TemplateHandlerInterface
      * @param array $config 参数
      * @return void
      */
-    public function config($config)
+    public function config(array $config)
     {
         $this->config = array_merge($this->config, $config);
     }

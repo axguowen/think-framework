@@ -176,7 +176,7 @@ class Config
      * @param  string $name 配置名
      * @return array
      */
-    public function set($config, $name = null)
+    public function set(array $config, $name = null)
     {
         if (!empty($name)) {
             if (isset($this->config[$name])) {

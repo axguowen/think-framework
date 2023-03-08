@@ -51,7 +51,7 @@ class Input
         $this->definition = new Definition();
     }
 
-    protected function setTokens($tokens)
+    protected function setTokens(array $tokens)
     {
         $this->tokens = $tokens;
     }

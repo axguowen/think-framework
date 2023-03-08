@@ -65,7 +65,7 @@ class Socket implements LogHandlerInterface
      * @param App   $app
      * @param array $config 缓存参数
      */
-    public function __construct(App $app, $config = [])
+    public function __construct(App $app, array $config = [])
     {
         $this->app = $app;
 
@@ -84,7 +84,7 @@ class Socket implements LogHandlerInterface
      * @param array $log 日志信息
      * @return bool
      */
-    public function save($log = [])
+    public function save(array $log = [])
     {
         if (!$this->check()) {
             return false;

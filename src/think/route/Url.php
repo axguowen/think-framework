@@ -73,7 +73,7 @@ class Url
      * @param  string $url URL地址
      * @param  array  $vars 参数
      */
-    public function __construct(Route $route, App $app, $url = '', $vars = [])
+    public function __construct(Route $route, App $app, $url = '', array $vars = [])
     {
         $this->route = $route;
         $this->app   = $app;
@@ -87,7 +87,7 @@ class Url
      * @param  array $vars URL参数
      * @return $this
      */
-    public function vars($vars = [])
+    public function vars(array $vars = [])
     {
         $this->vars = $vars;
         return $this;
@@ -292,7 +292,7 @@ class Url
      * @param  mixed $allowDomain 允许域名
      * @return array
      */
-    protected function getRuleUrl($rule, &$vars = [], $allowDomain = '')
+    protected function getRuleUrl(array $rule, array &$vars = [], $allowDomain = '')
     {
         $request = $this->app->request;
         if (is_string($allowDomain) && false === strpos($allowDomain, '.')) {

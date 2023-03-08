@@ -49,7 +49,7 @@ class Store
     /** @var array */
     protected $serialize = [];
 
-    public function __construct($name, SessionHandlerInterface $handler, $serialize = null)
+    public function __construct($name, SessionHandlerInterface $handler, array $serialize = null)
     {
         $this->name    = $name;
         $this->handler = $handler;
@@ -67,7 +67,7 @@ class Store
      * @param array $data
      * @return void
      */
-    public function setData($data)
+    public function setData(array $data)
     {
         $this->data = $data;
     }

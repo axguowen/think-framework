@@ -54,7 +54,7 @@ class Cookie
      * 构造方法
      * @access public
      */
-    public function __construct(Request $request, $config = [])
+    public function __construct(Request $request, array $config = [])
     {
         $this->request = $request;
         $this->config  = array_merge($this->config, array_change_key_case($config));
@@ -129,7 +129,7 @@ class Cookie
      * @param  array  $option 可选参数
      * @return void
      */
-    protected function setCookie($name, $value, $expire, $option = [])
+    protected function setCookie($name, $value, $expire, array $option = [])
     {
         $this->cookie[$name] = [$value, $expire, $option];
     }
@@ -160,7 +160,7 @@ class Cookie
      * @param  array  $options cookie参数
      * @return void
      */
-    public function delete($name, $options = [])
+    public function delete($name, array $options = [])
     {
         $config = array_merge($this->config, array_change_key_case($options));
         $this->setCookie($name, '', time() - 3600, $config);

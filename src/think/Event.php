@@ -56,7 +56,7 @@ class Event
      * @param array $events 事件定义
      * @return $this
      */
-    public function listenEvents($events)
+    public function listenEvents(array $events)
     {
         foreach ($events as $event => $listeners) {
             if (isset($this->bind[$event])) {
@@ -128,7 +128,7 @@ class Event
      * @param array $events 事件别名
      * @return $this
      */
-    public function bind($events)
+    public function bind(array $events)
     {
         $this->bind = array_merge($this->bind, $events);
 

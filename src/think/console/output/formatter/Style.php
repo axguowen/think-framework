@@ -54,7 +54,7 @@ class Style
      * @param array       $options    格式
      * @api
      */
-    public function __construct($foreground = null, $background = null, $options = [])
+    public function __construct($foreground = null, $background = null, array $options = [])
     {
         if (null !== $foreground) {
             $this->setForeground($foreground);
@@ -147,7 +147,7 @@ class Style
      * 批量设置字体格式
      * @param array $options
      */
-    public function setOptions($options)
+    public function setOptions(array $options)
     {
         $this->options = [];
 

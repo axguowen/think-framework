@@ -39,7 +39,7 @@ class Memcache extends Driver
      * @param array $options 缓存参数
      * @throws \BadFunctionCallException
      */
-    public function __construct($options = [])
+    public function __construct(array $options = [])
     {
         if (!extension_loaded('memcache')) {
             throw new \BadFunctionCallException('not support: memcache');
@@ -199,7 +199,7 @@ class Memcache extends Driver
      * @param array $keys 缓存标识列表
      * @return void
      */
-    public function clearTag($keys)
+    public function clearTag(array $keys)
     {
         foreach ($keys as $key) {
             $this->handler->delete($key);

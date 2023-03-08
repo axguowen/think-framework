@@ -97,7 +97,7 @@ class Url extends Controller
      * @param  array $route 路由信息
      * @return bool
      */
-    protected function hasDefinedRoute($route)
+    protected function hasDefinedRoute(array $route)
     {
         list($controller, $action) = $route;
 

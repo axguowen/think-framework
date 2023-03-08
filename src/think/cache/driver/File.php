@@ -40,7 +40,7 @@ class File extends Driver
      * @param App   $app
      * @param array $options 参数
      */
-    public function __construct(App $app, $options = [])
+    public function __construct(App $app, array $options = [])
     {
         if (!empty($options)) {
             $this->options = array_merge($this->options, $options);
@@ -252,7 +252,7 @@ class File extends Driver
      * @param array $keys 缓存标识列表
      * @return void
      */
-    public function clearTag($keys)
+    public function clearTag(array $keys)
     {
         foreach ($keys as $key) {
             $this->unlink($key);

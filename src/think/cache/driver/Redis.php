@@ -47,7 +47,7 @@ class Redis extends Driver
      * @access public
      * @param array $options 缓存参数
      */
-    public function __construct($options = [])
+    public function __construct(array $options = [])
     {
         if (!empty($options)) {
             $this->options = array_merge($this->options, $options);
@@ -213,7 +213,7 @@ class Redis extends Driver
      * @param array $keys 缓存标识列表
      * @return void
      */
-    public function clearTag($keys)
+    public function clearTag(array $keys)
     {
         // 指定标签清除
         $this->handler->del($keys);

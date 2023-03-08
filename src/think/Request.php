@@ -918,7 +918,7 @@ class Request implements ArrayAccess
      * @param  array $route 路由变量
      * @return $this
      */
-    public function setRoute($route)
+    public function setRoute(array $route)
     {
         $this->route      = array_merge($this->route, $route);
         $this->mergeParam = false;
@@ -1168,7 +1168,7 @@ class Request implements ArrayAccess
         }
     }
 
-    protected function dealUploadFile($files, $name)
+    protected function dealUploadFile(array $files, $name)
     {
         $array = [];
         foreach ($files as $key => $file) {
@@ -1258,7 +1258,7 @@ class Request implements ArrayAccess
      * @param  string|array $filter 过滤函数
      * @return mixed
      */
-    public function input($data = [], $name = '', $default = null, $filter = '')
+    public function input(array $data = [], $name = '', $default = null, $filter = '')
     {
         if (false === $name) {
             // 获取原始数据
@@ -1352,7 +1352,7 @@ class Request implements ArrayAccess
      * @param  mixed  $default 默认值
      * @return mixed
      */
-    protected function getData($data, $name, $default = null)
+    protected function getData(array $data, $name, $default = null)
     {
         foreach (explode('.', $name) as $val) {
             if (isset($data[$val])) {
@@ -1483,7 +1483,7 @@ class Request implements ArrayAccess
      * @param  string|array $filter 过滤方法
      * @return array
      */
-    public function only($name, $data = 'param', $filter = '')
+    public function only(array $name, $data = 'param', $filter = '')
     {
         $data = is_array($data) ? $data : $this->$data();
 
@@ -1513,7 +1513,7 @@ class Request implements ArrayAccess
      * @param  string $type 变量类型
      * @return mixed
      */
-    public function except($name, $type = 'param')
+    public function except(array $name, $type = 'param')
     {
         $param = $this->$type();
 
@@ -1947,7 +1947,7 @@ class Request implements ArrayAccess
      * @param  array  $data  表单数据
      * @return bool
      */
-    public function checkToken($token = '__token__', $data = [])
+    public function checkToken($token = '__token__', array $data = [])
     {
         if (in_array($this->method(), ['GET', 'HEAD', 'OPTIONS'], true)) {
             return true;
@@ -1987,7 +1987,7 @@ class Request implements ArrayAccess
      * @param  array $middleware 数据
      * @return $this
      */
-    public function withMiddleware($middleware)
+    public function withMiddleware(array $middleware)
     {
         $this->middleware = array_merge($this->middleware, $middleware);
         return $this;
@@ -1999,7 +1999,7 @@ class Request implements ArrayAccess
      * @param  array $get 数据
      * @return $this
      */
-    public function withGet($get)
+    public function withGet(array $get)
     {
         $this->get = $get;
         return $this;
@@ -2011,7 +2011,7 @@ class Request implements ArrayAccess
      * @param  array $post 数据
      * @return $this
      */
-    public function withPost($post)
+    public function withPost(array $post)
     {
         $this->post = $post;
         return $this;
@@ -2023,7 +2023,7 @@ class Request implements ArrayAccess
      * @param array $cookie 数据
      * @return $this
      */
-    public function withCookie($cookie)
+    public function withCookie(array $cookie)
     {
         $this->cookie = $cookie;
         return $this;
@@ -2047,7 +2047,7 @@ class Request implements ArrayAccess
      * @param  array $server 数据
      * @return $this
      */
-    public function withServer($server)
+    public function withServer(array $server)
     {
         $this->server = array_change_key_case($server, CASE_UPPER);
         return $this;
@@ -2059,7 +2059,7 @@ class Request implements ArrayAccess
      * @param  array $header 数据
      * @return $this
      */
-    public function withHeader($header)
+    public function withHeader(array $header)
     {
         $this->header = array_change_key_case($header);
         return $this;
@@ -2102,7 +2102,7 @@ class Request implements ArrayAccess
      * @param  array $files 上传信息
      * @return $this
      */
-    public function withFiles($files)
+    public function withFiles(array $files)
     {
         $this->file = $files;
         return $this;
@@ -2114,7 +2114,7 @@ class Request implements ArrayAccess
      * @param  array $route 数据
      * @return $this
      */
-    public function withRoute($route)
+    public function withRoute(array $route)
     {
         $this->route = $route;
         return $this;

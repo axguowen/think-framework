@@ -27,7 +27,7 @@ class Choice extends Question
      * @param array  $choices  选项
      * @param mixed  $default  默认答案
      */
-    public function __construct($question, $choices, $default = null)
+    public function __construct($question, array $choices, $default = null)
     {
         parent::__construct($question, $default);
 

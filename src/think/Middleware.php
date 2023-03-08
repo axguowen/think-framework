@@ -47,7 +47,7 @@ class Middleware
      * @param string $type 中间件类型
      * @return void
      */
-    public function import($middlewares = [], $type = 'global')
+    public function import(array $middlewares = [], $type = 'global')
     {
         foreach ($middlewares as $middleware) {
             $this->add($middleware, $type);
@@ -226,7 +226,7 @@ class Middleware
      * @param array $middlewares
      * @return array
      */
-    protected function sortMiddleware($middlewares)
+    protected function sortMiddleware(array $middlewares)
     {
         $priority = $this->app->config->get('middleware.priority', []);
         uasort($middlewares, function ($a, $b) use ($priority) {

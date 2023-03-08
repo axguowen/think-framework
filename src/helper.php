@@ -44,7 +44,7 @@ if (!function_exists('abort')) {
      * @param string           $message 错误信息
      * @param array            $header  参数
      */
-    function abort($code, $message = '', $header = [])
+    function abort($code, $message = '', array $header = [])
     {
         if ($code instanceof Response) {
             throw new HttpResponseException($code);
@@ -63,7 +63,7 @@ if (!function_exists('app')) {
      * @param bool                   $newInstance 是否每次创建新的实例
      * @return T|object|App
      */
-    function app($name = '', $args = [], $newInstance = false)
+    function app($name = '', array $args = [], $newInstance = false)
     {
         return Container::getInstance()->make($name ?: App::class, $args, $newInstance);
     }
@@ -287,7 +287,7 @@ if (!function_exists('invoke')) {
      * @param array $args 参数
      * @return mixed
      */
-    function invoke($call, $args = [])
+    function invoke($call, array $args = [])
     {
         if (is_callable($call)) {
             return Container::getInstance()->invoke($call, $args);
@@ -335,7 +335,7 @@ if (!function_exists('lang')) {
      * @param string $lang 语言
      * @return mixed
      */
-    function lang($name, $vars = [], $lang = '')
+    function lang($name, array $vars = [], $lang = '')
     {
         return Lang::get($name, $vars, $lang);
     }
@@ -499,7 +499,7 @@ if (!function_exists('url')) {
      * @param bool|string $domain 域名
      * @return UrlBuild
      */
-    function url($url = '', $vars = [], $suffix = true, $domain = false)
+    function url($url = '', array $vars = [], $suffix = true, $domain = false)
     {
         return Route::buildUrl($url, $vars)->suffix($suffix)->domain($domain);
     }
@@ -514,7 +514,7 @@ if (!function_exists('validate')) {
      * @param bool         $failException 是否抛出异常
      * @return Validate
      */
-    function validate($validate = '', $message = [], $batch = false, $failException = true)
+    function validate($validate = '', array $message = [], $batch = false, $failException = true)
     {
         if (is_array($validate) || '' === $validate) {
             $v = new Validate();

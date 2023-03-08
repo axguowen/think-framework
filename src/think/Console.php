@@ -218,7 +218,7 @@ class Console
      * @param string $driver
      * @return Output|Buffer
      */
-    public function call($command, $parameters = [], $driver = 'buffer')
+    public function call($command, array $parameters = [], $driver = 'buffer')
     {
         array_unshift($parameters, $command);
 
@@ -383,7 +383,7 @@ class Console
      * @access public
      * @param array $commands
      */
-    public function addCommands($commands)
+    public function addCommands(array $commands)
     {
         foreach ($commands as $key => $command) {
             if (is_subclass_of($command, Command::class)) {
@@ -689,7 +689,7 @@ class Console
      * @param array $abbrevs
      * @return string
      */
-    private function getAbbreviationSuggestions($abbrevs)
+    private function getAbbreviationSuggestions(array $abbrevs)
     {
         return sprintf('%s, %s%s', $abbrevs[0], $abbrevs[1], count($abbrevs) > 2 ? sprintf(' and %d more', count($abbrevs) - 2) : '');
     }

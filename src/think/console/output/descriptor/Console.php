@@ -129,7 +129,7 @@ class Console
      * @param array $commands
      * @return array
      */
-    private function sortCommands($commands)
+    private function sortCommands(array $commands)
     {
         $namespacedCommands = [];
         foreach ($commands as $name => $command) {

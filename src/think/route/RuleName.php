@@ -152,7 +152,7 @@ class RuleName
      * @param  array $item 路由标识
      * @return void
      */
-    public function import($item)
+    public function import(array $item)
     {
         $this->item = $item;
     }

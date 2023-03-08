@@ -180,7 +180,7 @@ abstract class Response
      * @param  mixed $options 输出参数
      * @return $this
      */
-    public function options($options = [])
+    public function options(array $options = [])
     {
         $this->options = array_merge($this->options, $options);
 
@@ -244,7 +244,7 @@ abstract class Response
      * @param  array $header  参数
      * @return $this
      */
-    public function header($header = [])
+    public function header(array $header = [])
     {
         $this->header = array_merge($this->header, $header);
 

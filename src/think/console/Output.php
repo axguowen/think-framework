@@ -103,7 +103,7 @@ class Output
     /**
      * {@inheritdoc}
      */
-    public function choice(Input $input, $question, $choices, $default = null)
+    public function choice(Input $input, $question, array $choices, $default = null)
     {
         if (null !== $default) {
             $values  = array_flip($choices);
@@ -203,7 +203,7 @@ class Output
         return self::VERBOSITY_DEBUG <= $this->verbosity;
     }
 
-    public function describe($object, $options = [])
+    public function describe($object, array $options = [])
     {
         $descriptor = new Descriptor();
         $options    = array_merge([

@@ -180,7 +180,7 @@ class Log extends Manager implements LoggerInterface
      * @param bool   $lazy
      * @return $this
      */
-    public function record($msg, $type = 'info', $context = [], $lazy = true)
+    public function record($msg, $type = 'info', array $context = [], $lazy = true)
     {
         $channel = $this->getConfig('type_channel.' . $type);
 
@@ -197,7 +197,7 @@ class Log extends Manager implements LoggerInterface
      * @param array  $context 替换内容
      * @return $this
      */
-    public function write($msg, $type = 'info', $context = [])
+    public function write($msg, $type = 'info', array $context = [])
     {
         return $this->record($msg, $type, $context, false);
     }

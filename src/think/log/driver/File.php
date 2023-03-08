@@ -61,7 +61,7 @@ class File implements LogHandlerInterface
      * @param array $log 日志信息
      * @return bool
      */
-    public function save($log)
+    public function save(array $log)
     {
         $destination = $this->getMasterLogFile();
 
@@ -109,7 +109,7 @@ class File implements LogHandlerInterface
      * @param string $destination 日志文件
      * @return bool
      */
-    protected function write($message, $destination)
+    protected function write(array $message, $destination)
     {
         // 检测日志文件大小，超过配置大小则备份日志文件重新生成
         $this->checkLogSize($destination);

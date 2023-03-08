@@ -31,7 +31,7 @@ class Facade
      * @param  bool   $newInstance 是否每次创建新的实例
      * @return object
      */
-    protected static function createFacade($class = '', $args = [], $newInstance = false)
+    protected static function createFacade($class = '', array $args = [], $newInstance = false)
     {
         $class = $class ?: static::class;
 

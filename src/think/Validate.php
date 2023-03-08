@@ -337,7 +337,7 @@ class Validate
      * @param array $message 错误信息
      * @return Validate
      */
-    public function message($message)
+    public function message(array $message)
     {
         $this->message = array_merge($this->message, $message);
 
@@ -401,7 +401,7 @@ class Validate
      * @param array $fields 字段名
      * @return $this
      */
-    public function only($fields)
+    public function only(array $fields)
     {
         $this->only = $fields;
 
@@ -467,7 +467,7 @@ class Validate
      * @param array $rules 验证规则
      * @return bool
      */
-    public function check($data, $rules = [])
+    public function check(array $data, array $rules = [])
     {
         $this->error = [];
 
@@ -590,7 +590,7 @@ class Validate
      * @param array  $msg   提示信息
      * @return mixed
      */
-    protected function checkItem($field, $value, $rules, $data, $title = '', $msg = [])
+    protected function checkItem($field, $value, $rules, $data, $title = '', array $msg = [])
     {
         if (isset($this->remove[$field]) && true === $this->remove[$field] && empty($this->append[$field])) {
             // 字段已经移除 无需验证
@@ -714,7 +714,7 @@ class Validate
      * @param string $field 字段名
      * @return bool
      */
-    public function confirm($value, $rule, $data = [], $field = '')
+    public function confirm($value, $rule, array $data = [], $field = '')
     {
         if ('' == $rule) {
             if (strpos($field, '_confirm')) {
@@ -735,7 +735,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function different($value, $rule, $data = [])
+    public function different($value, $rule, array $data = [])
     {
         return $this->getDataValue($data, $rule) != $value;
     }
@@ -748,7 +748,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function egt($value, $rule, $data = [])
+    public function egt($value, $rule, array $data = [])
     {
         return $value >= $this->getDataValue($data, $rule);
     }
@@ -761,7 +761,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function gt($value, $rule, $data = [])
+    public function gt($value, $rule, array $data = [])
     {
         return $value > $this->getDataValue($data, $rule);
     }
@@ -774,7 +774,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function elt($value, $rule, $data = [])
+    public function elt($value, $rule, array $data = [])
     {
         return $value <= $this->getDataValue($data, $rule);
     }
@@ -787,7 +787,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function lt($value, $rule, $data = [])
+    public function lt($value, $rule, array $data = [])
     {
         return $value < $this->getDataValue($data, $rule);
     }
@@ -824,7 +824,7 @@ class Validate
      * @param array  $data  数据
      * @return bool
      */
-    public function is($value, $rule, $data = [])
+    public function is($value, $rule, array $data = [])
     {
         switch (Str::camel($rule)) {
             case 'require':
@@ -910,7 +910,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function token($value, $rule, $data)
+    public function token($value, $rule, array $data)
     {
         $rule = !empty($rule) ? $rule : '__token__';
         return $this->request->checkToken($rule, $data);
@@ -1121,7 +1121,7 @@ class Validate
      * @param string $field 验证字段名
      * @return bool
      */
-    public function unique($value, $rule, $data = [], $field = '')
+    public function unique($value, $rule, array $data = [], $field = '')
     {
         if (is_string($rule)) {
             $rule = explode(',', $rule);
@@ -1199,7 +1199,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function requireIf($value, $rule, $data = [])
+    public function requireIf($value, $rule, array $data = [])
     {
         list($field, $val) = explode(',', $rule);
 
@@ -1218,7 +1218,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function requireCallback($value, $rule, $data = [])
+    public function requireCallback($value, $rule, array $data = [])
     {
         $result = call_user_func_array([$this, $rule], [$value, $data]);
 
@@ -1237,7 +1237,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function requireWith($value, $rule, $data = [])
+    public function requireWith($value, $rule, array $data = [])
     {
         $val = $this->getDataValue($data, $rule);
 
@@ -1256,7 +1256,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function requireWithout($value, $rule, $data = [])
+    public function requireWithout($value, $rule, array $data = [])
     {
         $val = $this->getDataValue($data, $rule);
 
@@ -1401,7 +1401,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function after($value, $rule, $data = [])
+    public function after($value, $rule, array $data = [])
     {
         return strtotime($value) >= strtotime($rule);
     }
@@ -1414,7 +1414,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function before($value, $rule, $data = [])
+    public function before($value, $rule, array $data = [])
     {
         return strtotime($value) <= strtotime($rule);
     }
@@ -1427,7 +1427,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function afterWith($value, $rule, $data = [])
+    public function afterWith($value, $rule, array $data = [])
     {
         $rule = $this->getDataValue($data, $rule);
         return !is_null($rule) && strtotime($value) >= strtotime($rule);
@@ -1441,7 +1441,7 @@ class Validate
      * @param array $data  数据
      * @return bool
      */
-    public function beforeWith($value, $rule, $data = [])
+    public function beforeWith($value, $rule, array $data = [])
     {
         $rule = $this->getDataValue($data, $rule);
         return !is_null($rule) && strtotime($value) <= strtotime($rule);
@@ -1536,7 +1536,7 @@ class Validate
      * @param string $key  数据标识 支持二维
      * @return mixed
      */
-    protected function getDataValue($data, $key)
+    protected function getDataValue(array $data, $key)
     {
         if (is_numeric($key)) {
             $value = $key;
@@ -1643,7 +1643,7 @@ class Validate
      * @param string $title 字段描述名
      * @return array
      */
-    protected function errorMsgIsArray($msg, $rule, $title)
+    protected function errorMsgIsArray(array $msg, $rule, $title)
     {
         foreach ($msg as $key => $val) {
             if (is_string($val)) {

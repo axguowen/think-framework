@@ -23,7 +23,7 @@ class ChannelSet
     protected $log;
     protected $channels;
 
-    public function __construct(Log $log, $channels)
+    public function __construct(Log $log, array $channels)
     {
         $this->log      = $log;
         $this->channels = $channels;

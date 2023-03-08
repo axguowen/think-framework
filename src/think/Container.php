@@ -114,7 +114,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param bool                   $newInstance 是否每次创建新的实例
      * @return T|object
      */
-    public static function pull($abstract, $vars = [], $newInstance = false)
+    public static function pull($abstract, array $vars = [], $newInstance = false)
     {
         return static::getInstance()->make($abstract, $vars, $newInstance);
     }
@@ -238,7 +238,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param bool                   $newInstance 是否每次创建新的实例
      * @return T|object
      */
-    public function make($abstract, $vars = [], $newInstance = false)
+    public function make($abstract, array $vars = [], $newInstance = false)
     {
         $abstract = $this->getAlias($abstract);
 
@@ -281,7 +281,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param array          $vars     参数
      * @return mixed
      */
-    public function invokeFunction($function, $vars = [])
+    public function invokeFunction($function, array $vars = [])
     {
         try {
             $reflect = new ReflectionFunction($function);
@@ -302,7 +302,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param bool  $accessible 设置是否可访问
      * @return mixed
      */
-    public function invokeMethod($method, $vars = [], $accessible = false)
+    public function invokeMethod($method, array $vars = [], $accessible = false)
     {
         if (is_array($method)) {
             $tempMethod = $method;
@@ -338,7 +338,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param array  $vars     参数
      * @return mixed
      */
-    public function invokeReflectMethod($instance, $reflect, $vars = [])
+    public function invokeReflectMethod($instance, $reflect, array $vars = [])
     {
         $args = $this->bindParams($reflect, $vars);
 
@@ -353,7 +353,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param bool  $accessible 设置是否可访问
      * @return mixed
      */
-    public function invoke($callable, $vars = [], $accessible = false)
+    public function invoke($callable, array $vars = [], $accessible = false)
     {
         if ($callable instanceof Closure) {
             return $this->invokeFunction($callable, $vars);
@@ -371,7 +371,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param array  $vars  参数
      * @return mixed
      */
-    public function invokeClass($class, $vars = [])
+    public function invokeClass($class, array $vars = [])
     {
         try {
             $reflect = new ReflectionClass($class);
@@ -429,7 +429,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param array                      $vars    参数
      * @return array
      */
-    protected function bindParams(ReflectionFunctionAbstract $reflect, $vars = [])
+    protected function bindParams(ReflectionFunctionAbstract $reflect, array $vars = [])
     {
         if ($reflect->getNumberOfParameters() == 0) {
             return [];

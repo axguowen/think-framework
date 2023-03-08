@@ -31,7 +31,7 @@ interface TemplateHandlerInterface
      * @param  array  $data 模板变量
      * @return void
      */
-    public function fetch($template, $data = []);
+    public function fetch($template, array $data = []);
 
     /**
      * 渲染模板内容
@@ -40,7 +40,7 @@ interface TemplateHandlerInterface
      * @param  array  $data 模板变量
      * @return void
      */
-    public function display($content, $data = []);
+    public function display($content, array $data = []);
 
     /**
      * 配置模板引擎
@@ -48,7 +48,7 @@ interface TemplateHandlerInterface
      * @param  array $config 参数
      * @return void
      */
-    public function config($config);
+    public function config(array $config);
 
     /**
      * 获取模板引擎配置

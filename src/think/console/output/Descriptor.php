@@ -30,7 +30,7 @@ class Descriptor
     /**
      * {@inheritdoc}
      */
-    public function describe(Output $output, $object, $options = [])
+    public function describe(Output $output, $object, array $options = [])
     {
         $this->output = $output;
 
@@ -71,7 +71,7 @@ class Descriptor
      * @param array         $options
      * @return string|mixed
      */
-    protected function describeInputArgument(InputArgument $argument, $options = [])
+    protected function describeInputArgument(InputArgument $argument, array $options = [])
     {
         if (null !== $argument->getDefault()
             && (!is_array($argument->getDefault())
@@ -96,7 +96,7 @@ class Descriptor
      * @param array       $options
      * @return string|mixed
      */
-    protected function describeInputOption(InputOption $option, $options = [])
+    protected function describeInputOption(InputOption $option, array $options = [])
     {
         if ($option->acceptValue() && null !== $option->getDefault()
             && (!is_array($option->getDefault())
@@ -132,7 +132,7 @@ class Descriptor
      * @param array           $options
      * @return string|mixed
      */
-    protected function describeInputDefinition(InputDefinition $definition, $options = [])
+    protected function describeInputDefinition(InputDefinition $definition, array $options = [])
     {
         $totalWidth = $this->calculateTotalWidthForOptions($definition->getOptions());
         foreach ($definition->getArguments() as $argument) {
@@ -177,7 +177,7 @@ class Descriptor
      * @param array   $options
      * @return string|mixed
      */
-    protected function describeCommand(Command $command, $options = [])
+    protected function describeCommand(Command $command, array $options = [])
     {
         $command->getSynopsis(true);
         $command->getSynopsis(false);
@@ -212,7 +212,7 @@ class Descriptor
      * @param array   $options
      * @return string|mixed
      */
-    protected function describeConsole(Console $console, $options = [])
+    protected function describeConsole(Console $console, array $options = [])
     {
         $describedNamespace = isset($options['namespace']) ? $options['namespace'] : null;
         $description        = new ConsoleDescription($console, $describedNamespace);
@@ -267,7 +267,7 @@ class Descriptor
     /**
      * {@inheritdoc}
      */
-    private function writeText($content, $options = [])
+    private function writeText($content, array $options = [])
     {
         $this->write(isset($options['raw_text'])
             && $options['raw_text'] ? strip_tags($content) : $content, isset($options['raw_output']) ? !$options['raw_output'] : true);
@@ -287,7 +287,7 @@ class Descriptor
      * @param Namespaces[] $namespaces
      * @return int
      */
-    private function getColumnWidth($namespaces)
+    private function getColumnWidth(array $namespaces)
     {
         $width = 0;
         foreach ($namespaces as $namespace) {

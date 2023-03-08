@@ -95,7 +95,7 @@ class Schema extends Command
         }
     }
 
-    protected function buildDataBaseSchema(PDOConnection $connection, $tables, $dbName)
+    protected function buildDataBaseSchema(PDOConnection $connection, array $tables, $dbName)
     {
         foreach ($tables as $table) {
             //预读字段信息

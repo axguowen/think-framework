@@ -63,7 +63,7 @@ class Lang
      * @access public
      * @param array $config
      */
-    public function __construct(App $app, $config = [])
+    public function __construct(App $app, array $config = [])
     {
         $this->config = array_merge($this->config, array_change_key_case($config));
         $this->range  = $this->config['default_lang'];
@@ -241,7 +241,7 @@ class Lang
      * @param string      $range 语言作用域
      * @return mixed
      */
-    public function get($name = null, $vars = [], $range = '')
+    public function get($name = null, array $vars = [], $range = '')
     {
         $range = $range ?: $this->range;
 

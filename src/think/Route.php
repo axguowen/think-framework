@@ -284,7 +284,7 @@ class Route
      * @param array $pattern 变量规则
      * @return $this
      */
-    public function pattern($pattern)
+    public function pattern(array $pattern)
     {
         $this->group->pattern($pattern);
 
@@ -297,7 +297,7 @@ class Route
      * @param array $option 参数
      * @return $this
      */
-    public function option($option)
+    public function option(array $option)
     {
         $this->group->option($option);
 
@@ -438,7 +438,7 @@ class Route
      * @param array $name 路由标识
      * @return void
      */
-    public function import($name)
+    public function import(array $name)
     {
         $this->ruleName->import($name);
     }
@@ -682,7 +682,7 @@ class Route
      * @param array  $vars     模板变量
      * @return RuleItem
      */
-    public function view($rule, $template = '', $vars = [])
+    public function view($rule, $template = '', array $vars = [])
     {
         return $this->rule($rule, function () use ($vars, $template) {
             return Response::create($template, 'view')->assign($vars);
@@ -925,7 +925,7 @@ class Route
      * @param array  $vars 参数 ['a'=>'val1', 'b'=>'val2']
      * @return UrlBuild
      */
-    public function buildUrl($url = '', $vars = [])
+    public function buildUrl($url = '', array $vars = [])
     {
         return $this->app->make(UrlBuild::class, [$this, $this->app, $url, $vars], true);
     }

@@ -108,7 +108,7 @@ class Table
      * @param int   $align      对齐方式 默认1 ALGIN_LEFT 0 ALIGN_RIGHT 2 ALIGN_CENTER
      * @return void
      */
-    public function setHeader($header, $align = 1)
+    public function setHeader(array $header, $align = 1)
     {
         $this->header      = $header;
         $this->headerAlign = $align;
@@ -123,7 +123,7 @@ class Table
      * @param int   $align      对齐方式 默认1 ALGIN_LEFT 0 ALIGN_RIGHT 2 ALIGN_CENTER
      * @return void
      */
-    public function setRows($rows, $align = 1)
+    public function setRows(array $rows, $align = 1)
     {
         $this->rows      = $rows;
         $this->cellAlign = $align;
@@ -251,7 +251,7 @@ class Table
      * @param  array $dataList       表格数据
      * @return string
      */
-    public function render($dataList = [])
+    public function render(array $dataList = [])
     {
         if (!empty($dataList)) {
             $this->setRows($dataList);

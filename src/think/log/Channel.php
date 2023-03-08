@@ -42,7 +42,7 @@ class Channel implements LoggerInterface
      */
     protected $allow = [];
 
-    public function __construct($name, LogHandlerInterface $logger, $allow, $lazy = true, Event $event = null)
+    public function __construct($name, LogHandlerInterface $logger, array $allow, $lazy = true, Event $event = null)
     {
         $this->name   = $name;
         $this->logger = $logger;
@@ -77,7 +77,7 @@ class Channel implements LoggerInterface
      * @param bool   $lazy
      * @return $this
      */
-    public function record($msg, $type = 'info', $context = [], $lazy = true)
+    public function record($msg, $type = 'info', array $context = [], $lazy = true)
     {
         if ($this->close || (!empty($this->allow) && !in_array($type, $this->allow))) {
             return $this;
@@ -114,7 +114,7 @@ class Channel implements LoggerInterface
      * @param array  $context 替换内容
      * @return $this
      */
-    public function write($msg, $type = 'info', $context = [])
+    public function write($msg, $type = 'info', array $context = [])
     {
         return $this->record($msg, $type, $context, false);
     }

@@ -28,7 +28,7 @@ interface ModelRelationInterface
      * @param  Closure $closure     闭包查询条件
      * @return Collection
      */
-    public function getRelation($subRelation = [], Closure $closure = null);
+    public function getRelation(array $subRelation = [], Closure $closure = null);
 
     /**
      * 预载入关联查询
@@ -39,7 +39,7 @@ interface ModelRelationInterface
      * @param  Closure $closure     闭包条件
      * @return void
      */
-    public function eagerlyResultSet(&$resultSet, $relation, $subRelation, Closure $closure = null);
+    public function eagerlyResultSet(&$resultSet, $relation, array $subRelation, Closure $closure = null);
 
     /**
      * 预载入关联查询
@@ -50,7 +50,7 @@ interface ModelRelationInterface
      * @param  Closure $closure     闭包条件
      * @return void
      */
-    public function eagerlyResult(Model $result, $relation, $subRelation = [], Closure $closure = null);
+    public function eagerlyResult(Model $result, $relation, array $subRelation = [], Closure $closure = null);
 
     /**
      * 关联统计

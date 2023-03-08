@@ -53,7 +53,7 @@ abstract class Dispatch
      */
     protected $param;
 
-    public function __construct(Request $request, Rule $rule, $dispatch, $param = [])
+    public function __construct(Request $request, Rule $rule, $dispatch, array $param = [])
     {
         $this->request  = $request;
         $this->rule     = $rule;
@@ -157,7 +157,7 @@ abstract class Dispatch
      * @param array $matches   路由变量
      * @return void
      */
-    protected function createBindModel($bindModel, $matches)
+    protected function createBindModel(array $bindModel, array $matches)
     {
         foreach ($bindModel as $key => $val) {
             if ($val instanceof \Closure) {
@@ -203,7 +203,7 @@ abstract class Dispatch
      * @return void
      * @throws \think\exception\ValidateException
      */
-    protected function autoValidate($option)
+    protected function autoValidate(array $option)
     {
         list($validate, $scene, $message, $batch) = $option;
 

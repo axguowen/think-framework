@@ -100,7 +100,7 @@ abstract class Rule
      * @param  array $option 参数
      * @return $this
      */
-    public function option($option)
+    public function option(array $option)
     {
         $this->option = array_merge($this->option, $option);
 
@@ -127,7 +127,7 @@ abstract class Rule
      * @param  array $pattern 变量规则
      * @return $this
      */
-    public function pattern($pattern)
+    public function pattern(array $pattern)
     {
         $this->pattern = array_merge($this->pattern, $pattern);
 
@@ -341,7 +341,7 @@ abstract class Rule
      * @param  array $filter 参数过滤
      * @return $this
      */
-    public function filter($filter)
+    public function filter(array $filter)
     {
         $this->option['filter'] = $filter;
 
@@ -377,7 +377,7 @@ abstract class Rule
      * @param  array $append 追加参数
      * @return $this
      */
-    public function append($append = [])
+    public function append(array $append = [])
     {
         $this->option['append'] = $append;
 
@@ -393,7 +393,7 @@ abstract class Rule
      * @param  bool   $batch 批量验证
      * @return $this
      */
-    public function validate($validate, $scene = null, $message = [], $batch = false)
+    public function validate($validate, $scene = null, array $message = [], $batch = false)
     {
         $this->option['validate'] = [$validate, $scene, $message, $batch];
 
@@ -426,7 +426,7 @@ abstract class Rule
      * @param  array $header 自定义Header
      * @return $this
      */
-    public function allowCrossDomain($header = [])
+    public function allowCrossDomain(array $header = [])
     {
         return $this->middleware(AllowCrossDomain::class, $header);
     }
@@ -470,7 +470,7 @@ abstract class Rule
      * @param  array $option 路由参数
      * @return $this
      */
-    public function mergeOptions($option = [])
+    public function mergeOptions(array $option = [])
     {
         $this->mergeOptions = array_merge($this->mergeOptions, $option);
         return $this;
@@ -526,7 +526,7 @@ abstract class Rule
      * @param  array $view 视图
      * @return $this
      */
-    public function view($view = [])
+    public function view(array $view = [])
     {
         return $this->setOption('view', $view);
     }
@@ -593,7 +593,7 @@ abstract class Rule
      * @param  array   $matches 匹配的变量
      * @return Dispatch
      */
-    public function parseRule(Request $request, $rule, $route, $url, $option = [], $matches = [])
+    public function parseRule(Request $request, $rule, $route, $url, array $option = [], array $matches = [])
     {
         if (is_string($route) && isset($option['prefix'])) {
             // 路由地址前缀
@@ -641,7 +641,7 @@ abstract class Rule
      * @param  array   $option 路由参数
      * @return Dispatch
      */
-    protected function dispatch(Request $request, $route, $option)
+    protected function dispatch(Request $request, $route, array $option)
     {
         if (is_subclass_of($route, Dispatch::class)) {
             $result = new $route($request, $this, $route, $this->vars);
@@ -702,7 +702,7 @@ abstract class Rule
      * @param  Request $request Request对象
      * @return bool
      */
-    protected function checkOption($option, Request $request)
+    protected function checkOption(array $option, Request $request)
     {
         // 检查当前路由是否匹配
         if (isset($option['match']) && is_callable($option['match'])) {
@@ -806,7 +806,7 @@ abstract class Rule
      * @param  string $suffix   路由正则变量后缀
      * @return string
      */
-    protected function buildRuleRegex($rule, $match, $pattern = [], $option = [], $completeMatch = false, $suffix = '')
+    protected function buildRuleRegex($rule, array $match, array $pattern = [], array $option = [], $completeMatch = false, $suffix = '')
     {
         foreach ($match as $name) {
             $value = $this->buildNameRegex($name, $pattern, $suffix);
@@ -844,7 +844,7 @@ abstract class Rule
      * @param  string $suffix  路由正则变量后缀
      * @return string
      */
-    protected function buildNameRegex($name, $pattern, $suffix)
+    protected function buildNameRegex($name, array $pattern, $suffix)
     {
         $optional = '';
         $slash    = substr($name, 0, 1);

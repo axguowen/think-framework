@@ -34,7 +34,7 @@ class Definition
      * @param array $definition
      * @api
      */
-    public function __construct($definition = [])
+    public function __construct(array $definition = [])
     {
         $this->setDefinition($definition);
     }
@@ -43,7 +43,7 @@ class Definition
      * 设置指令的定义
      * @param array $definition 定义的数组
      */
-    public function setDefinition($definition)
+    public function setDefinition(array $definition)
     {
         $arguments = [];
         $options   = [];
@@ -63,7 +63,7 @@ class Definition
      * 设置参数
      * @param Argument[] $arguments 参数数组
      */
-    public function setArguments($arguments = [])
+    public function setArguments(array $arguments = [])
     {
         $this->arguments          = [];
         $this->requiredCount      = 0;
@@ -77,7 +77,7 @@ class Definition
      * @param Argument[] $arguments 参数数组
      * @api
      */
-    public function addArguments($arguments = [])
+    public function addArguments(array $arguments = [])
     {
         if (null !== $arguments) {
             foreach ($arguments as $argument) {
@@ -193,7 +193,7 @@ class Definition
      * 设置选项
      * @param Option[] $options 选项数组
      */
-    public function setOptions($options = [])
+    public function setOptions(array $options = [])
     {
         $this->options   = [];
         $this->shortcuts = [];
@@ -205,7 +205,7 @@ class Definition
      * @param Option[] $options 选项数组
      * @api
      */
-    public function addOptions($options = [])
+    public function addOptions(array $options = [])
     {
         foreach ($options as $option) {
             $this->addOption($option);

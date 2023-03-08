@@ -35,7 +35,7 @@ class Wincache extends Driver
      * @param array $options 缓存参数
      * @throws \BadFunctionCallException
      */
-    public function __construct($options = [])
+    public function __construct(array $options = [])
     {
         if (!function_exists('wincache_ucache_info')) {
             throw new \BadFunctionCallException('not support: WinCache');
@@ -166,7 +166,7 @@ class Wincache extends Driver
      * @param array $keys 缓存标识列表
      * @return void
      */
-    public function clearTag($keys)
+    public function clearTag(array $keys)
     {
         wincache_ucache_delete($keys);
     }

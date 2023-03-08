@@ -33,7 +33,7 @@ class File implements SessionHandlerInterface
         'gc_divisor'     => 100,
     ];
 
-    public function __construct(App $app, $config = [])
+    public function __construct(App $app, array $config = [])
     {
         $this->config = array_merge($this->config, $config);
 

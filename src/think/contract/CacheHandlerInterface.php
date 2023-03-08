@@ -82,6 +82,6 @@ interface CacheHandlerInterface
      * @param array $keys 缓存标识列表
      * @return void
      */
-    public function clearTag($keys);
+    public function clearTag(array $keys);
 
 }

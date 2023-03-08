@@ -83,7 +83,7 @@ class View extends Manager
      * @return string
      * @throws \Exception
      */
-    public function fetch($template = '', $vars = [])
+    public function fetch($template = '', array $vars = [])
     {
         return $this->getContent(function () use ($vars, $template) {
             $this->engine()->fetch($template, array_merge($this->data, $vars));
@@ -97,7 +97,7 @@ class View extends Manager
      * @param array  $vars    模板变量
      * @return string
      */
-    public function display($content, $vars = [])
+    public function display($content, array $vars = [])
     {
         return $this->getContent(function () use ($vars, $content) {
             $this->engine()->display($content, array_merge($this->data, $vars));
