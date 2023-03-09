@@ -259,7 +259,7 @@ class RuleGroup extends Rule
      * @param  bool    $completeMatch 路由是否完全匹配
      * @return Dispatch|false
      */
-    protected function checkMergeRuleRegex(Request $request, &$rules, $url, $completeMatch)
+    protected function checkMergeRuleRegex(Request $request, array &$rules, $url, $completeMatch)
     {
         $depr  = $this->router->config('pathinfo_depr');
         $url   = $depr . str_replace('|', $depr, $url);

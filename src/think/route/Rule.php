@@ -764,7 +764,7 @@ abstract class Rule
      * @param  array  $var 变量
      * @return void
      */
-    protected function parseUrlParams($url, &$var = [])
+    protected function parseUrlParams($url, array &$var = [])
     {
         if ($url) {
             preg_replace_callback('/(\w+)\|([^\|]+)/', function ($match) use (&$var) {

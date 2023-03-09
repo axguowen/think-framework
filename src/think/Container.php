@@ -488,7 +488,7 @@ class Container implements ContainerInterface, ArrayAccess, IteratorAggregate, C
      * @param array  $vars      参数
      * @return mixed
      */
-    protected function getObjectParam($className, &$vars)
+    protected function getObjectParam($className, array &$vars)
     {
         $array = $vars;
         $value = array_shift($array);

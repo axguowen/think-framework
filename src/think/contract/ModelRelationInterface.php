@@ -39,7 +39,7 @@ interface ModelRelationInterface
      * @param  Closure $closure     闭包条件
      * @return void
      */
-    public function eagerlyResultSet(&$resultSet, $relation, array $subRelation, Closure $closure = null);
+    public function eagerlyResultSet(array &$resultSet, $relation, array $subRelation, Closure $closure = null);
 
     /**
      * 预载入关联查询
