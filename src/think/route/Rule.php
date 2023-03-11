@@ -428,6 +428,11 @@ abstract class Rule
      */
     public function allowCrossDomain(array $header = [])
     {
+        if ($this instanceof RuleItem) {
+            $this->method .= '|options';
+            $this->setAutoOptions();
+        }
+
         return $this->middleware(AllowCrossDomain::class, $header);
     }
 
@@ -571,14 +576,7 @@ abstract class Rule
      */
     public function crossDomainRule()
     {
-        if ($this instanceof RuleGroup) {
-            $method = '*';
-        } else {
-            $method = $this->method;
-        }
-
-        $this->router->setCrossDomainRule($this, $method);
-
+        $this->router->setCrossDomainRule($this);
         return $this;
     }
 

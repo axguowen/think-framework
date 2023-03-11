@@ -406,7 +406,7 @@ class RuleGroup extends Rule
         // 创建路由规则实例
         $ruleItem = new RuleItem($this->router, $this, $name, $rule, $route, $method);
 
-        $this->addRuleItem($ruleItem, $method);
+        $this->addRuleItem($ruleItem);
 
         return $ruleItem;
     }
@@ -415,22 +415,11 @@ class RuleGroup extends Rule
      * 注册分组下的路由规则
      * @access public
      * @param  Rule   $rule   路由规则
-     * @param  string $method 请求类型
      * @return $this
      */
-    public function addRuleItem(Rule $rule, $method = '*')
+    public function addRuleItem(Rule $rule)
     {
-        if (strpos($method, '|')) {
-            $rule->method($method);
-            $method = '*';
-        }
-
-        if ($rule instanceof RuleItem && !in_array($method, ['*','options'])) {
-            $method .= '|options';
-            $rule->setAutoOptions();
-        }
-
-        $this->rules[] = [$method, $rule];
+        $this->rules[] = $rule;
 
         return $this;
     }
@@ -495,7 +484,8 @@ class RuleGroup extends Rule
         }
 
         return array_filter($this->rules, function ($item) use ($method) {
-            return '*' == $item[0] || false !== strpos($item[0], $method);
+            $ruleMethod = $item->getMethod();
+            return '*' == $ruleMethod || false !== strpos($ruleMethod, $method);
         });
     }
 
