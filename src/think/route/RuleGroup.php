@@ -161,8 +161,8 @@ class RuleGroup extends Rule
         }
 
         // 检查分组路由
-        foreach ($rules as $key => $item) {
-            $result = $item[1]->check($request, $url, $completeMatch);
+        foreach ($rules as $item) {
+            $result = $item->check($request, $url, $completeMatch);
 
             if (false !== $result) {
                 return $result;
@@ -171,9 +171,9 @@ class RuleGroup extends Rule
 
         if (!empty($option['dispatcher'])) {
             $result = $this->parseRule($request, '', $option['dispatcher'], $url, $option);
-        } elseif ($this->miss && in_array($this->miss->getMethod(), ['*', $method])) {
+        } elseif ($miss = $this->getMissRule($method)) {
             // 未匹配所有路由的路由规则处理
-            $result = $this->parseRule($request, '', $this->miss->getRoute(), $url, $this->miss->getOption());
+            $result = $this->parseRule($request, '', $miss->getRoute(), $url, $miss->getOption());
         } else {
             $result = false;
         }
@@ -355,11 +355,19 @@ class RuleGroup extends Rule
     /**
      * 获取分组的MISS路由
      * @access public
+     * @param  string $method 请求类型
      * @return RuleItem|null
      */
-    public function getMissRule()
+    public function getMissRule($method = '*')
     {
-        return $this->miss;
+        if (isset($this->miss[$method])) {
+            $miss = $this->miss[$method];
+        } elseif (isset($this->miss['*'])) {
+            $miss = $this->miss['*'];
+        } else {
+            return null;
+        }
+        return $miss;
     }
 
     /**
@@ -374,8 +382,7 @@ class RuleGroup extends Rule
         // 创建路由规则实例
         $ruleItem = new RuleItem($this->router, $this, null, '', $route, strtolower($method));
 
-        $ruleItem->setMiss();
-        $this->miss = $ruleItem;
+        $this->miss[$method] = $ruleItem->setMiss();
 
         return $ruleItem;
     }
